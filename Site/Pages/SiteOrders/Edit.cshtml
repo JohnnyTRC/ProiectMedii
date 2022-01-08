@@ -1,0 +1,78 @@
+﻿@page
+@model Site.Pages.SiteOrders.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editare</h1>
+
+<h4>Cofetărie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SiteOrder.ComandaSiteId" />
+            <div class="form-group">
+                <label asp-for="SiteOrder.CustomerClientId" class="control-label">Nume Prenume Client</label>
+                <select asp-for="SiteOrder.CustomerClientId" class="form-control" asp-items="ViewBag.CustomerClientId">
+                </select>
+                <span asp-validation-for="SiteOrder.CustomerClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteOrder.DataComanda" class="control-label"></label>
+                <input asp-for="SiteOrder.DataComanda" class="form-control" />
+                <span asp-validation-for="SiteOrder.DataComanda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteOrder.MenuProdusId" class="control-label">Nume Preț Produs</label>
+                <select asp-for="SiteOrder.MenuProdusId" class="form-control" asp-items="ViewBag.MenuProdusId">
+                </select>
+                <span asp-validation-for="SiteOrder.MenuProdusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteOrder.Cantitate" class="control-label"></label>
+                <input asp-for="SiteOrder.Cantitate" class="form-control" />
+                <span asp-validation-for="SiteOrder.Cantitate" class="text-danger"></span>
+            </div>
+
+    <div class="form-group">
+        <div class="table">
+            <table>
+                <tr>
+                    @{
+                        int cnt = 0;
+                        foreach (var per in Model.AssignedPersonalizationDataList)
+                        {
+                            if (cnt++ % 3 == 0)
+                            {
+                            @:</tr>Personalizări<tr>
+                            }
+                            @:<td>
+                                <input type="checkbox"
+                                       name="selectedPersonalizations"
+                                       value="@per.PersonalizationID"
+                                       @(Html.Raw(per.Assigned ? "checked=\"checked\"" : "")) />
+                                @per.PersonalizationID @: @per.Name
+                            @:</td>
+                        }
+                    @:</tr>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

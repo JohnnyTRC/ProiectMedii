@@ -1,0 +1,48 @@
+﻿@page
+@model Site.Pages.Customers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Clienți</h1>
+
+<p>
+    <a asp-page="Create">Client nou</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].NumeClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].PrenumeClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].NrTelefon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Customer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenumeClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrTelefon)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ClientId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ClientId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ClientId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

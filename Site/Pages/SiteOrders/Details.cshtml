@@ -1,0 +1,31 @@
+﻿@page
+@model Site.Pages.SiteOrders.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SiteOrder</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SiteOrder.Cantitate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SiteOrder.Cantitate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SiteOrder.DataComanda)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SiteOrder.DataComanda)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SiteOrder.ComandaSiteId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

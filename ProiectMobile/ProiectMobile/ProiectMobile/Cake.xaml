@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProiectMobile.Cake"
+             BackgroundImageSource="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wedding_Cake_%2814475675057%29.jpg" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Lista Comenzi" Clicked="ListaComenzi" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <SearchBar Placeholder="Cauta un produs" TextChanged="SearchBar_TextChanged" BackgroundColor="White" />
+        <ListView x:Name="listView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" BackgroundColor="White" >
+                            <Image Source="{Binding ImageURL}" />
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Grid>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="Nume Produs:" TextColor="Black" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding NumeProdus}" TextColor="Black" />
+                                    <Label Grid.Row="1" Grid.Column="0" Text="Pret:" TextColor="Black" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Pret}" TextColor="Black" />
+                                </Grid>
+                            </StackLayout>
+                            <Button Text="comanda" Clicked="ComandaClicked" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

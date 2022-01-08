@@ -1,0 +1,76 @@
+﻿@page "/{id:int?}"
+@model Site.Pages.SiteOrders.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Comenzi</h1>
+
+<p>
+    <a asp-page="Create">Comandă nouă</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <span>Nume Client</span>
+            </th>
+            <th>
+                <span>Prenume Client</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteOrder[0].DataComanda)
+            </th>
+            <th>
+                <span>Nume Produs</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteOrder[0].Cantitate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiteOrder[0].SiteOrderPersons)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SiteOrderD.SiteOrders)
+        {
+            string selectedRow = "";
+            if (item.ComandaSiteId == Model.SiteOrderComandaSiteId)
+            {
+                selectedRow = "table-success";
+            }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.NumeClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.PrenumeClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataComanda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Menu.NumeProdus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantitate)
+            </td>
+            <td>
+                @{
+                    foreach (var personalization in item.SiteOrderPersons)
+                    {
+                        @personalization.Personalization.ID @: @personalization.Personalization.NumePersonalizare <br />
+                    }
+                }
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ComandaSiteId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ComandaSiteId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ComandaSiteId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

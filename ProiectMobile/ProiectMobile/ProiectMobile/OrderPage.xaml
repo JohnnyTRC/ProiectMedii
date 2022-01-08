@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="ProiectMobile.OrderPage"
+             BackgroundImageSource="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wedding_Cake_%2814475675057%29.jpg">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+                <Label Text="Comanda" HorizontalOptions="Center" TextColor="White" FontSize="30" />
+
+                <Editor Placeholder="Titlul comenzii" Text="{Binding TitluComanda}" HeightRequest="100"  TextColor="White" PlaceholderColor="White" />
+
+
+                <Label Text="Nume client:" TextColor="White" />
+                <Entry Keyboard="Text" x:Name="nume" Text="{Binding NumeClient}" TextColor="White" />
+
+                <Label Text="Adresa client:" TextColor="White" />
+                <Entry Keyboard="Text" x:Name="adresa" Text="{Binding AdresaClient}" TextColor="White" />
+
+                <Label Text="Numar de telefon:" TextColor="White" />
+                <Entry Keyboard="Numeric" x:Name="numar_telefon" Text="{Binding NumarTelefon}" TextColor="White" />
+
+                <Label Text="Data comanda"  TextColor="White"/>
+                <DatePicker x:Name="data_comanda" MinimumDate="{x:Static sys:DateTime.Today}" Date="{Binding DataComanda}" TextColor="White" />
+
+                <Label Text="Cantitate:" TextColor="White" />
+                <Entry Keyboard="Numeric" x:Name="cantitate" Text="{Binding Cantitate}" TextColor="White" />
+            
+            <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Save" Clicked="OnSaveButtonClicked" />
+                    <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+                </Grid>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

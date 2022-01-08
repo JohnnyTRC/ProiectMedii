@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProiectMobile.ListEntryPage"
+             BackgroundImageSource="https://upload.wikimedia.org/wikipedia/commons/0/0d/Wedding_Cake_%2814475675057%29.jpg" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Meniu" Clicked="MeniuClicked" />
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected" SeparatorColor="White" >
+        <ListView.ItemTemplate >
+            <DataTemplate>
+                <TextCell Text="{Binding TitluComanda}" Detail="{Binding Date}" TextColor="White" DetailColor="White" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
